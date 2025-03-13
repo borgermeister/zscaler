@@ -67,5 +67,5 @@ Configure the forwarding policy that instruct ZIA to route traffic via the ZPA g
 	- Forward to ZPA Gateway: `SIPA`
 	- Save the forwarding policy
 
-> [!NOTE]
+> [!IMPORTANT]
 > Remember to activate your changes when you are done.
