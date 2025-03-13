@@ -24,6 +24,8 @@ tar -xvf zpa-service-edge-el9-2024.12.ova
 VM_NAME=zpa-pse-01
 VM_ID=9000
 VM_STORAGE=local-zfs
+NETWORK_BRIDGE=vmbr0
+VLAN_TAG=10
 OVF_FILE=$(ls *.ovf | head -n 1)
 
 # Import the ZPA Private Service Edge disk
@@ -36,7 +38,7 @@ qm set $VM_ID --name $VM_NAME
 qm set $VM_ID --scsihw pvscsi
 
 # Assign network adapter
-qm set $VM_ID --net0 virtio,bridge=vmbr0,tag=10
+qm set $VM_ID --net0 virtio,bridge=$NETWORK_BRIDGE,tag=$VLAN_TAG
 
 # Assign CPU Architecture
 qm set $VM_ID --cpu cputype=x86-64-v2-AES
