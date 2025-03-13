@@ -134,6 +134,10 @@ sudo touch /opt/zscaler/var/provision_key
 sudo chmod 644 /opt/zscaler/var/provision_key
 echo $ZSCALER_PROVISION_KEY | sudo tee /opt/zscaler/var/provision_key
 
+# Start the ZPA Connector
 sudo systemctl start zpa-connector
 sudo systemctl status zpa-connector
+
+# Show the logs for the ZPA Connector service
+sudo journalctl -u zpa-connector -f
 ```
