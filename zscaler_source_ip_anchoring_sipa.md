@@ -63,7 +63,7 @@ Configure the ZPA gateway so that ZIA can route traffic via ZPA.
 
 Configure the forwarding policy that instruct ZIA to route traffic via the ZPA gateway.  
 
-- Infrastructure -> Internet & SaaS -> Networking Policies -> Forwarding Control-> Forwarding Control Policy -> Add Forwarding Rule
+- Infrastructure -> Internet & SaaS -> Networking Policies -> Forwarding Control -> Forwarding Control Policy -> Add Forwarding Rule
 	- Name: `SIPA`
 	- Forwarding Method: `ZPA`
 	- Criteria
