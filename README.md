@@ -8,7 +8,7 @@ Zscaler provides secure, private, and fast internet access to your users, no mat
 
 ## Contributing
 
-We welcome contributions to improve the Zscaler guides. To contribute:
+I welcome contributions to improve the Zscaler guides. To contribute:
 
 1. **Fork the Repository**: Create a fork of this repository.
 2. **Make Changes**: Edit the guides or add new ones.
