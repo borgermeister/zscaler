@@ -34,6 +34,10 @@ Create an access policy allowing traffic from a ZIA Service Edge to the newly cr
 		- Client Types: `ZIA Service Edge`
 	- Save the new access policy
 
+> [!NOTE]
+> This policy does not seem to work with User and Session Attributes
+> Use Forwarding Control Policy instead to allow users or groups to use SIPA
+ 
 ## Client Forwarding Policy
 
 Then you need to create a new client forwarding policy to instruct the client to send the traffic to ZIA instead of ZPA.  
