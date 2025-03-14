@@ -1,14 +1,12 @@
 # Zscaler GRE Tunnels
 
-## Zscaler and OPNsense GRE Tunnel
+## Zscaler Configuration
 
 ### Prerequisites
 
 Find the public IP of the site sourcing the GRE tunnels.
 
-### Zscaler Configuration
-
-#### Add Static IP and GRE Tunnel
+### Add Static IP and GRE Tunnel
 
 - Infrastructure -> Internet & SaaS -> Traffic Forwarding -> Location Management -> Static IPs & GRE Tunnel
 	- Static IP -> Add Static IP
@@ -27,9 +25,9 @@ Find the public IP of the site sourcing the GRE tunnels.
 > [!NOTE]
 > The /29 prefix you select will automatically be split into two /30 prefixes to be used on each GRE tunnel. The first IP in each prefix is assigned to your site and the last IP is used by Zscaler.
 
-### OPNsense Configuration
+## OPNsense Configuration
 
-#### Add GRE interfaces/tunnels
+### Add GRE interfaces/tunnels
 
 You need to create two GRE interfaces/tunnels.
 
@@ -41,13 +39,13 @@ You need to create two GRE interfaces/tunnels.
 	- Tunnel netmask / prefix: `/30`
 	- Description: `Something descriptive`
 
-#### Assign Interface
+### Assign Interface
 
 - Interfaces -> Assignments -> Assign a new interface
 	- Device: `Choose the correct GRE interface from the list`
 	- Description: `This name will be shown in the interfaces list and your firewall/NAT rules`
 
-#### Add Static Route
+### Add Static Route
 
 To route traffic over the GRE tunnels you will have to create static routes - one route for each tunnel.
 
