@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-Find the public IP of site sourcing the GRE tunnels.
+Find the public IP of the site sourcing the GRE tunnels.
 
 ### Zscaler Configuration
 
