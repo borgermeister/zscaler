@@ -8,7 +8,7 @@ Find the public IP of the site sourcing the GRE tunnels.
 
 ### Add Static IP and GRE Tunnel
 
-- Infrastructure -> Internet & SaaS -> Traffic Forwarding -> Location Management -> Static IPs & GRE Tunnel
+- **Infrastructure** -> **Internet & SaaS** -> **Traffic Forwarding** -> **Location Management** -> **Static IPs & GRE Tunnel**
 	- Static IP -> Add Static IP
 		- Static IP Address: `<public IP of the site>`
 		- Description: `Something descriptive`
@@ -31,7 +31,7 @@ Find the public IP of the site sourcing the GRE tunnels.
 
 You need to create two GRE interfaces/tunnels.
 
-- Interfaces -> Devices -> GRE -> Add
+- **Interfaces** -> **Devices** -> **GRE** -> **Add**
 	- Local address: `WAN interface`
 	- Remote address: `Primary or Secondary Data Center VIP`
 	- Tunnel local address: `First IP from the Internal IP Range - first or second /30 prefix`
@@ -41,7 +41,7 @@ You need to create two GRE interfaces/tunnels.
 
 ### Assign Interface
 
-- Interfaces -> Assignments -> Assign a new interface
+- **Interfaces** -> **Assignments** -> **Assign a new interface**
 	- Device: `Choose the correct GRE interface from the list`
 	- Description: `This name will be shown in the interfaces list and your firewall/NAT rules`
 
