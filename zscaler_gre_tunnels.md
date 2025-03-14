@@ -24,7 +24,7 @@ Find the public IP of site sourcing the GRE tunnels.
 		- Take note of the Primary and Secondary Data Center VIP
 		- Review and save the GRE Tunnel configuration
 
-> [!INFO]
+> [!NOTE]
 > The /29 prefix you select will automatically be split into two /30 prefixes to be used on each GRE tunnel. The first IP in each prefix is assigned to your site and the last IP is used by Zscaler.
 
 ### OPNsense Configuration
