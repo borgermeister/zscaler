@@ -49,7 +49,7 @@ You need to create two GRE interfaces/tunnels.
 
 There are two ways route traffic over the GRE tunnels. The best way is to edit the GRE tunnels under **System** -> **Gateways** -> **Configuration**. By lowering the **Priority** you can influence which gateway is being used. You can also monitor the peer IP on the gateway to make sure the tunnel is up.
 
-Another option to route traffic over the GRE tunnels is to create static routes - one route for each tunnel.
+Another option to route traffic over the GRE tunnels is to create static routes - one route for each tunnel.  
 
 > [!NOTE]
 > Depending on your setup you may have to create a firewall rule allowing GRE Protocol 47 on the WAN interface.
