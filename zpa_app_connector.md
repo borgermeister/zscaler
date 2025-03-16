@@ -4,6 +4,8 @@
 
 ### Prerequisites
 
+Install Helm with `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`
+
 Retrieve the provisioning key from the [Zscaler Access Admin Portal](https://console.zscaler.com/private#connectors)
 
 ### Add the Zscaler Private Access Connector Helm repository
