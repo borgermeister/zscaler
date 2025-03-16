@@ -497,17 +497,17 @@ spec:
 ```shell
 cilium bgp peers
 
-Node       Local AS   Peer AS    Peer Address                           Session State
-k3s-test    64512     64512    10.100.1.250                            established
-                64512      64512    2001:db8:dead:beef::250       established
+Node       Local AS   Peer AS    Peer Address               Session State
+k3s-test   64512      64512      10.100.1.250               established
+           64512      64512      2001:db8:dead:beef::250    established
 
 cilium bgp routes advertised ipv4
 
-Node       VRouter   Peer                Prefix              NextHop
-k3s-test   64512    10.100.1.205   10.42.0.0/24   10.100.1.224
+Node       VRouter   Peer           Prefix         NextHop
+k3s-test   64512     10.100.1.205   10.42.0.0/24   10.100.1.224
 
 cilium bgp routes advertised ipv6
 
-Node       VRouter   Peer                                    Prefix                                 NextHop
-k3s-test   64512    2001:db8:dead:beef::250   2001:db8:dead:100::/64   2001:db8:dead:beef::224
+Node       VRouter   Peer                      Prefix                   NextHop
+k3s-test   64512     2001:db8:dead:beef::250   2001:db8:dead:100::/64   2001:db8:dead:beef::224
 ```
