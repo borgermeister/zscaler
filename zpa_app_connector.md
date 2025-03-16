@@ -6,9 +6,9 @@
 
 Install Helm with `curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash`
 
->[!INFO]
->Sometime Curl doesn't like IPv6. You can fix this by creating a config file telling Curl to use IPv4.
->`echo ipv4 >> ~/.curlrc`
+> [!NOTE]
+> Sometime Curl doesn't like IPv6. You can fix this by creating a config file telling Curl to use IPv4.
+> `echo ipv4 >> ~/.curlrc`
 
 Retrieve the provisioning key from the [Zscaler Access Admin Portal](https://console.zscaler.com/private#connectors)
 
