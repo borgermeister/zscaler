@@ -426,7 +426,7 @@ spec:
       peers:
         - name: "peer4-64512-k3s-test"
           peerASN: 64512
-          peerAddress: "10.100.1.250"
+          peerAddress: "10.100.2.1"
           peerConfigRef:
             name: "peer-config"
         - name: "peer6-214373-k3s-test"
@@ -498,13 +498,13 @@ spec:
 cilium bgp peers
 
 Node       Local AS   Peer AS    Peer Address               Session State
-k3s-test   64512      64512      10.100.1.250               established
+k3s-test   64512      64512      10.100.2.1                 established
            64512      64512      2001:db8:dead:beef::250    established
 
 cilium bgp routes advertised ipv4
 
 Node       VRouter   Peer           Prefix         NextHop
-k3s-test   64512     10.100.1.205   10.42.0.0/24   10.100.1.224
+k3s-test   64512     10.100.2.1     10.42.0.0/24   10.100.2.224
 
 cilium bgp routes advertised ipv6
 
