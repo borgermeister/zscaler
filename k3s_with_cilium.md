@@ -339,7 +339,7 @@ spec:
   blocks:
     - cidr: "10.10.0.0/24"
     - cidr: "2001:db8:dead:dad::/64"
-		# - start: '10.100.1.227'
+    # - start: '10.100.1.227'
     #   stop: '10.100.1.229'
     # - start: '2001:db8:dead:beef::ff00'
     #   stop: '2001:db8:dead:beef::ffff'
