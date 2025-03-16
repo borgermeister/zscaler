@@ -35,6 +35,10 @@ For example, you can change the memory and CPU requests and limits.
 ```yaml
 ---
 zsglobal:
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 8
   replicaCount: 2
   resources:
     limits:
@@ -48,6 +52,9 @@ zsglobal:
       # memory: "4000Mi" # default Helm chart value
       # cpu: "2000m" # default Helm chart value
 ```
+
+> [!NOTE]
+> If you want to control how many pods to run disable **autoscaling**.
 
 ### Install the Chart
 
