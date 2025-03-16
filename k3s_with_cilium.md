@@ -377,13 +377,13 @@ Services can share the same IP as long as the services doesn't have conflicting 
 apiVersion: v1
 kind: Service
 metadata:
-	name: service-blue
-	namespace: example
-	label:
-		color: blue
+  name: service-blue
+  namespace: example
+  label:
+    color: blue
   annotations:
-	  lbipam.cilium.io/ips: "10.100.1.225,2001:db8:dead:beef::ff01"
-	  lbipam.cilium.io/sharing-key: "1234"
+    lbipam.cilium.io/ips: "10.100.1.225,2001:db8:dead:beef::ff01"
+    lbipam.cilium.io/sharing-key: "1234"
 ```
 
 ### Cilium BGP configuration
