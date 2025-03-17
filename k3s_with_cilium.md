@@ -125,6 +125,7 @@ hostname -I
 ### Install the first K3s control-plane node
 
 The config file will achieve the following:
+
 - `cluster-init: true` will initialize the cluster. *Only used on the first node*
 - `flannel-backend: "none"` disables the default Flannel CNI
 - `disable-kube-proxy: true` is used when the CNI provides its own proxy functionality
@@ -184,6 +185,7 @@ source $HOME/.bashrc
 
 > [!TIP]
 > Since you'll be using `kubectl`quite a lot, it can be smart to create an alias:
+> 
 > ```shell
 > echo "alias k=kubectl" >> ~/.bashrc
 > source ~/.bashrc
@@ -198,6 +200,7 @@ k3s-lab01   NotReady   control-plane,etcd,master   5m18s   v1.31.6+k3s1
 ```
 
 If you only plan to install one control-plane node you can skip all the way down to "**Install Cilium CLI**"
+
 #### Install additional control-plane nodes (optional but recommended)
 
 Get the join token from the first control-plane node: `/var/lib/rancher/k3s/server/token`
@@ -209,6 +212,7 @@ Get the join token from the first control-plane node: `/var/lib/rancher/k3s/serv
 > `curl -sfL https://get.k3s.io | sh -s - server --config=/etc/rancher/k3s/config.yaml`
 
 Explanation of the installation command:
+
 - **`sh -s - server`**: The `server` argument is passed to the K3s installation script, indicating that the node should be set up as a control-plane node. (the `server` statement may not be needed)
 - **`--token`**: Specifies the join token for the cluster.
 - **`--server`**: Specifies the URL of the existing K3s server's API server.
