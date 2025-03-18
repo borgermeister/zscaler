@@ -2,7 +2,8 @@
 
 ## Introduction
 
-This Getting Started guide will help you deploy a 3 node K3s cluster running Cilium as CNI. The cluster will also be configured to be dual-stacked.
+This Getting Started guide will help you deploy a 3 node K3s cluster running Cilium as CNI. The cluster will also be configured to be dual-stacked.  
+This establishes the prerequisites for ZPA Connector installation on Kubernetes.
 
 > [!NOTE]
 > The IPv6 prefix *2001:db8:dead::/48* is reserved for documentation purposes as per RFC3849 and should be replaced with an appropriate prefix from your IP plan.
