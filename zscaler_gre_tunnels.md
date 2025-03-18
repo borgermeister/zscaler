@@ -58,7 +58,7 @@ These values are caluculated based on a WAN interface with 1500 bytes MTU.
 > [!TIP]
 > The way you can calculate these values are by subtracting the GRE header (4 bytes), IP header (20 bytes) and TCP header (20 bytes).
 >
-> GRE MTU = MTU (1500) – IP (20) – GRE (4) = 1476
+> GRE MTU = MTU (1500) – IP (20) – GRE (4) = 1476  
 > GRE MSS = GRE MTU (1476) – IP (20) – TCP (20) = 1436
 
 ### Routing
