@@ -53,7 +53,7 @@ To avoid excessive fragmentation you should configure MTU and MSS on both GRE-in
 	- MTU: 1476 
 	- MSS: 1436
 
-These values are caluculated based on a WAN interface with 1500 bytes MTU.
+These values are calculated based on a WAN interface with 1500 bytes MTU.
 
 > [!TIP]
 > The way you can calculate these values are by subtracting the GRE header (4 bytes), IP header (20 bytes) and TCP header (20 bytes).
