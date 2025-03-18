@@ -45,6 +45,22 @@ You need to create two GRE interfaces/tunnels.
 	- Device: `Choose the correct GRE interface from the list`
 	- Description: `This name will be shown in the interfaces list and your firewall/NAT rules`
 
+### Interface MTU and MSS
+
+To avoid excessive fragmentation you should configure MTU and MSS on both GRE-interfaces.
+
+- **Interfaces** -> **GRE\[0,1]**
+	- MTU: 1476 
+	- MSS: 1436
+
+These values are caluculated based on a WAN interface with 1500 bytes MTU.
+
+> [!TIP]
+> The way you can calculate these values are by subtracting the GRE header (4 bytes), IP header (20 bytes) and TCP header (20 bytes).
+>
+> GRE MTU = MTU (1500) – IP (20) – GRE (4) = 1476
+> GRE MSS = GRE MTU (1476) – IP (20) – TCP (20) = 1436
+
 ### Routing
 
 There are two ways route traffic over the GRE tunnels. The best way is to edit the GRE tunnels under **System** -> **Gateways** -> **Configuration**. By lowering the **Priority** you can influence which gateway is being used. You can also monitor the peer IP on the gateway to make sure the tunnel is up.
