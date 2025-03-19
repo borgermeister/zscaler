@@ -156,3 +156,112 @@ sudo systemctl status zpa-connector
 # Show the logs for the ZPA Connector service
 sudo journalctl -u zpa-connector -f
 ```
+
+## ZPA App Connector on Proxmox LCX
+
+### Prerequisites
+
+Retrieve the provisioning key from the [Zscaler Access Admin Portal](https://console.zscaler.com/private#connectors)
+
+### Download the LCX template
+
+All steps below are done on a Proxmox node.
+
+```shell
+pveam update
+pveam available
+pveam download local fedora-41-default_20241118_amd64.tar.xz
+```
+
+### Install ZPA App Connector LXC
+
+```shell
+VM_ID=8000
+HOSTNAME=zpa-connector-01
+VM_STORAGE=local-zfs
+NETWORK_BRIDGE=vmbr0
+DISKSIZE=8
+MEMORY=1024
+SWAP=512
+CORES=2
+VID=2
+IP4=10.100.2.100/24
+GW4=10.100.2.1
+IP6=2a0b:4e07:c25:ff02::64/64
+GW6=2a0b:4e07:c25:ff02::1
+NAMESERVER=10.100.2.10,10.100.2.11
+SEARCHDOMAIN=home.borgermeister.cloud
+PASSWORD=zscaler123
+pct create $VM_ID local:vztmpl/fedora-41-default_20241118_amd64.tar.xz \
+  --description 'Zscaler - ZPA App Connector' \
+	--hostname $HOSTNAME \
+  --storage $VM_STORAGE \
+  --rootfs $VM_STORAGE:$DISKSIZE \
+  --memory $MEMORY \
+  --swap $SWAP \
+  --cores $CORES \
+  --net0 name=eth0,bridge=$NETWORK_BRIDGE,tag=$VID,ip=$IP4,gw=$GW4,ip6=$IP6,gw6=$GW6 \
+  --nameserver $NAMESERVER \
+  --searchdomain $SEARCHDOMAIN \
+  --password $PASSWORD
+```
+
+>[!NOTICE]
+>To use ZPA App Connector in the container you will have to modify the configuration file.  
+> Note that this will remove all security features from the LXC so use with caution!
+>
+>`nano /etc/pve/lxc/$VM_ID.conf`
+>
+>```shell
+> lxc.apparmor.profile: unconfined
+> lxc.cgroup2.devices.allow: a
+> lxc.cap.drop:
+> ```
+
+```shell
+# Start the LXC container
+pct start $VM_ID
+```
+
+### Add Zscaler repository
+
+All steps below are done on the ZPA App Connector.
+
+`sudo vi /etc/yum.repos.d/zscaler.repo`
+
+```shell
+# Content of /etc/yum.repos.d/zscaler.repo
+[zscaler]
+name=Zscaler Private Access Repository
+baseurl=https://yum.private.zscaler.com/yum/el9
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.private.zscaler.com/yum/el9/gpg
+```
+
+```shell
+# Install the ZPA App Connector package
+sudo yum install zpa-connector
+```
+
+### Enroll the App Connector
+
+```shell
+# Add the provision key as an environment variable
+ZSCALER_PROVISION_KEY="1|enrollment.zpatwo.net|XXXXXX"
+
+# Stop the ZPA Connector
+sudo systemctl stop zpa-connector
+
+# Create the provision file with correct permissions
+sudo touch /opt/zscaler/var/provision_key
+sudo chmod 644 /opt/zscaler/var/provision_key
+echo $ZSCALER_PROVISION_KEY | sudo tee /opt/zscaler/var/provision_key
+
+# Start the ZPA Connector
+sudo systemctl start zpa-connector
+sudo systemctl status zpa-connector
+
+# Show the logs for the ZPA Connector service
+sudo journalctl -u zpa-connector -f
+```
