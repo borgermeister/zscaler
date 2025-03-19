@@ -194,7 +194,7 @@ SEARCHDOMAIN=example.cloud
 PASSWORD=zscaler123
 pct create $VM_ID local:vztmpl/fedora-41-default_20241118_amd64.tar.xz \
   --description 'Zscaler - ZPA App Connector' \
-	--hostname $HOSTNAME \
+  --hostname $HOSTNAME \
   --storage $VM_STORAGE \
   --rootfs $VM_STORAGE:$DISKSIZE \
   --memory $MEMORY \
