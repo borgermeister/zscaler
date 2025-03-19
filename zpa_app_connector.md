@@ -170,15 +170,15 @@ All steps below are done on a Proxmox node.
 ```shell
 pveam update
 pveam available
-pveam download local fedora-41-default_20241118_amd64.tar.xz
+pveam download local centos-9-stream-default_20240828_amd64.tar.xz
 ```
 
 ### Install ZPA App Connector LXC
 
 ```shell
-VM_ID=8000
+LXC_ID=8000
 HOSTNAME=zpa-connector-01
-VM_STORAGE=local-zfs
+LXC_STORAGE=local-zfs
 NETWORK_BRIDGE=vmbr0
 DISKSIZE=8
 MEMORY=1024
@@ -192,11 +192,11 @@ GW6=2001:db8:dead:beef::1
 NAMESERVER=10.100.2.10,10.100.2.11
 SEARCHDOMAIN=example.cloud
 PASSWORD=zscaler123
-pct create $VM_ID local:vztmpl/fedora-41-default_20241118_amd64.tar.xz \
+pct create $LXC_ID local:vztmpl/centos-9-stream-default_20240828_amd64.tar.xz \
   --description 'Zscaler - ZPA App Connector' \
   --hostname $HOSTNAME \
-  --storage $VM_STORAGE \
-  --rootfs $VM_STORAGE:$DISKSIZE \
+  --storage $LXC_STORAGE \
+  --rootfs $LXC_STORAGE:$DISKSIZE \
   --memory $MEMORY \
   --swap $SWAP \
   --cores $CORES \
@@ -206,16 +206,11 @@ pct create $VM_ID local:vztmpl/fedora-41-default_20241118_amd64.tar.xz \
   --password $PASSWORD
 ```
 
->[!NOTICE]
->To use ZPA App Connector in the container you will have to modify the configuration file.  
+> [!NOTICE]
+> To use ZPA App Connector in the container you will have to modify the configuration file.  
 > Note that this will remove all security features from the LXC so use with caution!
 >
->`nano /etc/pve/lxc/$VM_ID.conf`
->
->```shell
-> lxc.apparmor.profile: unconfined
-> lxc.cgroup2.devices.allow: a
-> lxc.cap.drop:
+> `echo "lxc.cap.drop:" >> /etc/pve/lxc/$LXC_ID.conf`
 > ```
 
 ```shell
