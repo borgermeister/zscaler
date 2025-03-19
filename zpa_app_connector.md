@@ -211,7 +211,6 @@ pct create $LXC_ID local:vztmpl/centos-9-stream-default_20240828_amd64.tar.xz \
 > Note that this will remove all security features from the LXC so use with caution!
 >
 > `echo "lxc.cap.drop:" >> /etc/pve/lxc/$LXC_ID.conf`
-> ```
 
 ```shell
 # Start the LXC container
