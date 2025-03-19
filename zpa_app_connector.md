@@ -206,6 +206,9 @@ pct create $LXC_ID local:vztmpl/centos-9-stream-default_20240828_amd64.tar.xz \
   --password $PASSWORD
 ```
 
+If you're not running iPv6 in your network you can change the line `--net0` into this:  
+`--net0 name=eth0,bridge=$NETWORK_BRIDGE,tag=$VID,ip=$IP4,gw=$GW4,ip6=auto`
+
 > [!NOTE]
 > To use ZPA App Connector in the container you will have to modify the configuration file.  
 > Note that this will remove some security features from the LXC so use with caution!
