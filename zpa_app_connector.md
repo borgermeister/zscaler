@@ -187,10 +187,10 @@ CORES=2
 VID=2
 IP4=10.100.2.100/24
 GW4=10.100.2.1
-IP6=2a0b:4e07:c25:ff02::64/64
-GW6=2a0b:4e07:c25:ff02::1
+IP6=2001:db8:dead:beef::64/64
+GW6=2001:db8:dead:beef::1
 NAMESERVER=10.100.2.10,10.100.2.11
-SEARCHDOMAIN=home.borgermeister.cloud
+SEARCHDOMAIN=example.cloud
 PASSWORD=zscaler123
 pct create $VM_ID local:vztmpl/fedora-41-default_20241118_amd64.tar.xz \
   --description 'Zscaler - ZPA App Connector' \
