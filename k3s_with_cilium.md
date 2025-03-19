@@ -48,6 +48,8 @@ qm create $VM_ID \
   --net0 virtio,bridge=$NETWORK_BRIDGE,tag=$VLAN_TAG
 ```
 
+#### Proxmox OS Types
+
 | OS Type | Description                     |
 | ------- | ------------------------------- |
 | other   | unspecified OS                  |
@@ -65,7 +67,7 @@ qm create $VM_ID \
 
 ### Preparing the Ubuntu host
 
-If you have cloned an existing Ubuntu server from a template, there are a few steps you should take first.
+If you have cloned an existing Ubuntu server from a template, there are a few steps you should take first to make sure the server is working as expected.
 
 I prefer to use NeoVim as a text editor. Install it using the command: `sudo apt install neovim`
 
