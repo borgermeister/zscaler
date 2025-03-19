@@ -206,7 +206,7 @@ pct create $LXC_ID local:vztmpl/centos-9-stream-default_20240828_amd64.tar.xz \
   --password $PASSWORD
 ```
 
-If you're not running iPv6 in your network you can change the line `--net0` into this:  
+If you're not running IPv6 in your network you can change the line `--net0` into this:  
 `--net0 name=eth0,bridge=$NETWORK_BRIDGE,tag=$VID,ip=$IP4,gw=$GW4,ip6=auto`
 
 > [!NOTE]
