@@ -60,6 +60,9 @@ rm zpa-service-edge*
 # Start the SSH daemon if not started (must be done via the console)
 sudo systemctl start sshd
 
+# Configure correct timezone
+sudo timedatectl set-timezone Europe/Oslo
+
 # Add the provision key as an environment variable
 ZSCALER_PROVISION_KEY="1|enrollment.zpatwo.net|XXXXXX"
 
