@@ -1,14 +1,14 @@
 # ZPA Private Service Edge
 
-## ZPA Private Service Edge on Proxmox
-
-### Prerequisites
+## Prerequisites
 
 Retrieve the provisioning key from the [Zscaler Admin Portal](https://console.zscaler.com/private#privateBrokers)
 
-### Download and configure the ZPA Private Service Edge image
+## ZPA Private Service Edge on Proxmox
 
 All steps below are done on a Proxmox node.
+
+### Download and configure the ZPA Private Service Edge image
 
 ```shell
 # Elevate privileges to root
@@ -54,6 +54,18 @@ rm zpa-service-edge*
 ```
 
 ## ZPA Private Service Edge on Proxmox LXC
+
+All steps below are done on a Proxmox node.
+
+### Download the LCX template
+
+```shell
+pveam update
+pveam available
+pveam download local centos-9-stream-default_20240828_amd64.tar.xz
+```
+
+### Install ZPA Private Service Edge LXC
 
 ```shell
 LXC_ID=9000
@@ -122,6 +134,8 @@ sudo yum install zpa-service-edge
 ```
 
 ## Enroll the Private Service Edge
+
+All steps below are done on the ZPA Private Service Edge.
 
 ```shell
 # SSH into the Private Service Edge node
