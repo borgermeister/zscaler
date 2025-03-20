@@ -53,7 +53,75 @@ qm status $VM_ID
 rm zpa-service-edge*
 ```
 
-### Enroll the Private Service Edge
+## ZPA Private Service Edge on Proxmox LXC
+
+```shell
+LXC_ID=9000
+HOSTNAME=zpa-pse-01
+LXC_STORAGE=local-zfs
+NETWORK_BRIDGE=vmbr0
+DISKSIZE=8
+MEMORY=2048
+SWAP=512
+CORES=2
+VID=2
+IP4=10.100.2.253/24
+GW4=10.100.2.1
+IP6=2a0b:4e07:c25:ff02::fd/64
+GW6=2a0b:4e07:c25:ff02::1
+NAMESERVER=10.100.2.10,10.100.2.11
+SEARCHDOMAIN=home.borgermeister.cloud
+PASSWORD=zscaler123
+pct create $LXC_ID local:vztmpl/centos-9-stream-default_20240828_amd64.tar.xz \
+  --description 'Zscaler - ZPA Private Service Edge' \
+  --hostname $HOSTNAME \
+  --storage $LXC_STORAGE \
+  --rootfs $LXC_STORAGE:$DISKSIZE \
+  --memory $MEMORY \
+  --swap $SWAP \
+  --cores $CORES \
+  --net0 name=eth0,bridge=$NETWORK_BRIDGE,tag=$VID,ip=$IP4,gw=$GW4,ip6=$IP6,gw6=$GW6 \
+  --nameserver $NAMESERVER \
+  --searchdomain $SEARCHDOMAIN \
+  --password $PASSWORD
+```
+
+If you're not running IPv6 in your network you can change the line `--net0` into this:  
+`--net0 name=eth0,bridge=$NETWORK_BRIDGE,tag=$VID,ip=$IP4,gw=$GW4,ip6=auto`
+
+> [!NOTE]
+> To use ZPA Private Service Edge in the container you will have to modify the configuration file.  
+> Note that this will remove some security features from the LXC so use with caution!
+>
+> `echo "lxc.cap.drop:" >> /etc/pve/lxc/$LXC_ID.conf`
+
+```shell
+# Start the LXC container
+pct start $LXC_ID
+```
+
+### Add Zscaler repository
+
+All steps below are done on the ZPA Private Service Edge.
+
+`sudo vi /etc/yum.repos.d/zscaler.repo`
+
+```shell
+# Content of /etc/yum.repos.d/zscaler.repo
+[zscaler]
+name=Zscaler Private Access Repository
+baseurl=https://yum.private.zscaler.com/yum/el9
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.private.zscaler.com/yum/el9/gpg
+```
+
+```shell
+# Install the ZPA App Connector package
+sudo yum install zpa-service-edge
+```
+
+## Enroll the Private Service Edge
 
 ```shell
 # SSH into the Private Service Edge node
