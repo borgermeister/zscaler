@@ -129,7 +129,7 @@ gpgkey=https://yum.private.zscaler.com/yum/el9/gpg
 ```
 
 ```shell
-# Install the ZPA App Connector package
+# Install the ZPA Private Service Edge package
 sudo yum install zpa-service-edge
 ```
 
