@@ -133,7 +133,7 @@ qm start $VM_ID
 qm status $VM_ID
 ```
 
-[Continue to Enroll the App Connector](###-enroll-the-app-connector)
+[Continue to Enroll the App Connector](#enroll-the-app-connector)
 
 ## ZPA App Connector on Proxmox LCX
 
