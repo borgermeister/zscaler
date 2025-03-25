@@ -221,6 +221,8 @@ sudo yum install zpa-connector
 
 ## Enroll the App Connector
 
+All steps below are done on the ZPA App Connector.
+
 ```shell
 # Add the provision key as an environment variable
 ZSCALER_PROVISION_KEY="1|enrollment.zpatwo.net|XXXXXX"
