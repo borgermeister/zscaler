@@ -133,29 +133,7 @@ qm start $VM_ID
 qm status $VM_ID
 ```
 
-### Enroll the App Connector
-
-All steps below are done on the ZPA App Connector.
-
-```shell
-# Add the provision key as an environment variable
-ZSCALER_PROVISION_KEY="1|enrollment.zpatwo.net|XXXXXX"
-
-# Stop the ZPA Connector
-sudo systemctl stop zpa-connector
-
-# Create the provision file with correct permissions
-sudo touch /opt/zscaler/var/provision_key
-sudo chmod 644 /opt/zscaler/var/provision_key
-echo $ZSCALER_PROVISION_KEY | sudo tee /opt/zscaler/var/provision_key
-
-# Start the ZPA Connector
-sudo systemctl start zpa-connector
-sudo systemctl status zpa-connector
-
-# Show the logs for the ZPA Connector service
-sudo journalctl -u zpa-connector -f
-```
+Continue to **Enroll the App Connector**
 
 ## ZPA App Connector on Proxmox LCX
 
@@ -241,7 +219,7 @@ gpgkey=https://yum.private.zscaler.com/yum/el9/gpg
 sudo yum install zpa-connector
 ```
 
-### Enroll the App Connector
+## Enroll the App Connector
 
 ```shell
 # Add the provision key as an environment variable
