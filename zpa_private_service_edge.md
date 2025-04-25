@@ -95,7 +95,8 @@ pct create $LXC_ID local:vztmpl/centos-9-stream-default_20240828_amd64.tar.xz \
   --net0 name=eth0,bridge=$NETWORK_BRIDGE,tag=$VID,ip=$IP4,gw=$GW4,ip6=$IP6,gw6=$GW6 \
   --nameserver $NAMESERVER \
   --searchdomain $SEARCHDOMAIN \
-  --password $PASSWORD
+  --password $PASSWORD \
+  --onboot true
 ```
 
 If you're not running IPv6 in your network you can change the line `--net0` into this:  
