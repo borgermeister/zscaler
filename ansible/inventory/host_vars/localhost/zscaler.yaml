@@ -1,0 +1,75 @@
+zscaler_zia:
+  username: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zia/username") | default(omit) }}'
+  password: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zia/password") | default(omit) }}'
+  api_key: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zia/api_key") | default(omit) }}'
+  cloud: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zia/cloud") | default(omit) }}'
+
+zscaler_zpa:
+  client_id: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zpa/client_id") | default(omit) }}'
+  client_secret:   '{{ lookup("community.general.passwordstore", "ansible/zscaler/zpa/client_secret") | default(omit) }}'
+  customer_id: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zpa/customer_id") | default(omit) }}'
+  cloud: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zpa/cloud") | default(omit) }}'
+
+# Zscaler requires that the app connector group(s) exist before creating the server groups.
+# You need to specify the ID of the App Connector Group you want to use for the ZPA Server Group.
+# The app_connector_group_id variable should be formatted as follows:
+#   '{{ app_connector_group_id_[app connector groupname in lowercase without spaces/underscore/hyphen] }}'
+zpa_server_groups:
+  - name: Ansible
+    description: Created with Ansible
+    dynamic_discovery: true
+    app_connector_group_ids:
+      - '{{ app_connector_group_id_borgermeisterhome }}'
+  - name: Ansible2
+    description: Created with Ansible
+    dynamic_discovery: true
+    app_connector_group_ids:
+      - '{{ app_connector_group_id_borgermeisterhome }}'
+
+zpa_segment_groups:
+  - name: Ansible
+    description: Created with Ansible
+  - name: Ansible2
+    description: Created with Ansible
+
+zpa_app_segments:
+  - name: Ansible
+    description: Created with Ansible
+    enabled: true
+    health_reporting: ON_ACCESS
+    bypass_type: NEVER
+    is_cname_enabled: true
+    icmp_access_type: true
+    ip_anchored: false
+    tcp_port_range:
+      - from: 22
+        to: 22
+      - from: 80
+        to: 80
+      - from: 443
+        to: 443
+    udp_port_range: []
+    domain_names:
+      - test.home.borgermeister.cloud
+    segment_group_id: '{{ segment_group_id_ansible }}'
+    server_group_ids: '{{ server_group_id_ansible }}'
+  - name: Ansible2
+    description: Created with Ansible
+    enabled: true
+    health_reporting: ON_ACCESS
+    bypass_type: NEVER
+    is_cname_enabled: true
+    icmp_access_type: true
+    ip_anchored: false
+    tcp_port_range:
+      - from: 22
+        to: 22
+      - from: 443
+        to: 443
+    udp_port_range:
+      - from: null
+        to: null
+    domain_names:
+      - test2.home.borgermeister.cloud
+    segment_group_id: '{{ segment_group_id_borgermeisterhomefirewalls }}'
+    server_group_ids: '{{ server_group_id_borgermeisterhome }}'
