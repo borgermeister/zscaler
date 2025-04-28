@@ -1,15 +1,3 @@
-zscaler_zia:
-  username: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zia/username") | default(omit) }}'
-  password: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zia/password") | default(omit) }}'
-  api_key: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zia/api_key") | default(omit) }}'
-  cloud: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zia/cloud") | default(omit) }}'
-
-zscaler_zpa:
-  client_id: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zpa/client_id") | default(omit) }}'
-  client_secret:   '{{ lookup("community.general.passwordstore", "ansible/zscaler/zpa/client_secret") | default(omit) }}'
-  customer_id: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zpa/customer_id") | default(omit) }}'
-  cloud: '{{ lookup("community.general.passwordstore", "ansible/zscaler/zpa/cloud") | default(omit) }}'
-
 # Zscaler requires that the app connector group(s) exist before creating the server groups.
 # You need to specify the ID of the App Connector Group you want to use for the ZPA Server Group.
 # The app_connector_group_id variable should be formatted as follows:
