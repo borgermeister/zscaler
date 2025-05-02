@@ -8,17 +8,21 @@ zpa_server_groups:
     dynamic_discovery: true
     app_connector_group_ids:
       - '{{ app_connector_group_id_borgermeisterhome }}'
+    state: present
   - name: Ansible2
     description: Created with Ansible
     dynamic_discovery: true
     app_connector_group_ids:
       - '{{ app_connector_group_id_borgermeisterhome }}'
+    state: present
 
 zpa_segment_groups:
   - name: Ansible
     description: Created with Ansible
+    state: present
   - name: Ansible2
     description: Created with Ansible
+    state: present
 
 zpa_app_segments:
   - name: Ansible
@@ -41,6 +45,7 @@ zpa_app_segments:
       - test.home.borgermeister.cloud
     segment_group_id: '{{ segment_group_id_ansible }}'
     server_group_ids: '{{ server_group_id_ansible }}'
+    state: present
   - name: Ansible2
     description: Created with Ansible
     enabled: true
@@ -61,3 +66,4 @@ zpa_app_segments:
       - test2.home.borgermeister.cloud
     segment_group_id: '{{ segment_group_id_borgermeisterhomefirewalls }}'
     server_group_ids: '{{ server_group_id_borgermeisterhome }}'
+    state: present
