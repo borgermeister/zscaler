@@ -1,0 +1,1 @@
+This content has been moved to the [Ansible Zscaler repository](https://github.com/borgermeister/ansible_zscaler)
