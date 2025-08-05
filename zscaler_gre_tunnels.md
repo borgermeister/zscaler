@@ -6,9 +6,9 @@
 
 Find the public IP of the site sourcing the GRE tunnels.
 
-### Add Static IP and GRE Tunnels
+### Add Static IP and GRE Tunnel
 
-- **Infrastructure** -> **Internet & SaaS** -> **Traffic Forwarding** -> **Location Management** -> **Static IPs & GRE Tunnels**
+- **Infrastructure** -> **Internet & SaaS** -> **Traffic Forwarding** -> **Location Management** -> **Static IPs & GRE Tunnel**
 	- Static IP -> Add Static IP
 		- Static IP Address: `<public IP of the site>`
 		- Description: `Something descriptive`
