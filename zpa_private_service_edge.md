@@ -53,6 +53,8 @@ qm status $VM_ID
 rm zpa-service-edge*
 ```
 
+[Continue to Enroll the Private Service Edge](#enroll-the-private-service-edge)
+
 ## ZPA Private Service Edge on Proxmox LXC
 
 All steps below are done on a Proxmox node.
