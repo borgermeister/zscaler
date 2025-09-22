@@ -26,7 +26,7 @@ VM_ID=9000
 VM_STORAGE=local-zfs
 NETWORK_BRIDGE=vmbr0
 VLAN_TAG=10
-OVF_FILE=$(ls *.ovf | head -n 1)
+OVF_FILE=$(ls -lt *.ovf | head -n 1)
 
 # Import the ZPA Private Service Edge disk
 qm importovf $VM_ID $OVF_FILE $VM_STORAGE
