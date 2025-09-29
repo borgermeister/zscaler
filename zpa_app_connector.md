@@ -151,7 +151,7 @@ pveam available
 pveam download local centos-9-stream-default_20240828_amd64.tar.xz
 ```
 
->[!INFO]
+>[!TIP]
 >Rocky Linux 9 has also been verified to work using this guide:  
 >rockylinux-9-default_20240912_amd64.tar.xz
 
