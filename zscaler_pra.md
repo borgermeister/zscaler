@@ -1,4 +1,4 @@
-# Zscaler Privilege Remote Access
+# Zscaler Privileged Remote Access
 
 ## App Segments
 
