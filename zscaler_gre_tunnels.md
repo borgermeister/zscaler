@@ -63,7 +63,7 @@ These values are calculated based on a WAN interface with 1500 bytes MTU.
 
 ### Routing
 
-There are several ways route traffic over the GRE tunnels. One way way is to edit the GRE tunnels under **System** -> **Gateways** -> **Configuration**. By lowering the **Priority** you can influence which gateway is being used. You can also monitor the peer IP on the gateway to make sure the tunnel is up.
+There are several ways to route traffic over the GRE tunnels. One way way is to edit the GRE tunnels under **System** -> **Gateways** -> **Configuration**. By lowering the **Priority** you can influence which gateway is being used. You can also monitor the peer IP on the gateway to make sure the tunnel is up.
 
 Another option to route traffic over the GRE tunnels is to create static routes - one route for each tunnel.
 
@@ -71,3 +71,21 @@ A third option is to use Policy Based Routing where you specify which gateway to
 
 > [!NOTE]
 > Depending on your setup you may have to create a firewall rule allowing GRE Protocol 47 on the WAN interface.
+
+### Policy-Based Routing
+
+Remember when using GRE tunnels in combination with Zscaler Client Connector(ZCC) it is important to exempt ZCC traffic from entering the GRE tunnel. To achieve this you can use Policy-Based Routing(PBR) in OPNsense.
+
+First you'll need to create two gateway groups where one is your ISP and the other one is the GRE tunnel(s).
+
+- **System** -> **Gateways** -> **Group**
+
+Then you'll need to create an alias containing all **Cloud Enforcement Node Ranges**.
+
+- **Firewall** -> **Aliases**
+  - Name: Zscaler_Aggregate_IP_Addresses
+  - Type: URL Table in JSON format (IPs)
+  - Content: https://config.zscaler.com/api/zscalertwo.net/future/json (remember to choose the correct Zscaler Cloud)
+  - Path expression: .prefixes[]
+
+And lastly you'll need to create a firewall rule using the newly created alias as destination, and choose which gateway to send the traffic to.
